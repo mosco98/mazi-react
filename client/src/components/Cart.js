@@ -1,14 +1,28 @@
+import { motion } from 'framer-motion'
 import React from 'react'
 import { X } from 'react-feather'
+import { Link } from 'react-router-dom'
 
 const Cart = ({ CartHandler, cartItems, AddToCartHandler, RemoveFromCartHandler, DeleteProductFromCart }) => {
   const totalPrice = cartItems.reduce((a, c) => a + c.qty * c.new_price, 0)
+
+  const variants = {
+    visible: { opacity: 1 },
+    hidden: { opacity: 0 }
+  }
+
   return (
     <>
-      <div className="back-drop" onClick={CartHandler} />
+      <motion.div
+        className="back-drop"
+        initial="hidden"
+        animate="visible"
+        variants={variants}
+        onClick={() => CartHandler(false)}
+      />
       <div className="cart p-4">
         <span className="close-cart">
-          <X size="30" className="x" onClick={CartHandler} />
+          <X size="30" className="icon" onClick={() => CartHandler(false)} />
         </span>
         {cartItems.length === 0 ? (
           <span className="">Cart is empty</span>
@@ -35,7 +49,7 @@ const Cart = ({ CartHandler, cartItems, AddToCartHandler, RemoveFromCartHandler,
                       +
                     </button>
                   </div>
-                  <X size="18" className="x" onClick={() => DeleteProductFromCart(cartItem)} />
+                  <X size="18" className="x cursor-pointer" onClick={() => DeleteProductFromCart(cartItem)} />
                 </div>
               ))}
             </div>
@@ -44,7 +58,9 @@ const Cart = ({ CartHandler, cartItems, AddToCartHandler, RemoveFromCartHandler,
                 <h5>Subtotal:</h5>
                 <h5>₦{totalPrice}</h5>
               </div>
-              <button className="btn btn-block btn-lg">Checkout</button>
+              <Link to="/checkout" onClick={() => CartHandler(false)}>
+                <button className="btn btn-block btn-lg btn-dark">Checkout</button>
+              </Link>
             </div>
           </>
         )}

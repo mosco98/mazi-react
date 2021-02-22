@@ -13,19 +13,34 @@ const slides = [
     id: 1,
     background: backgroundImg__1,
     header: slideImg__1,
-    text: '50% off discount'
+    text: {
+      heading: 'Why are you an african?',
+      subHeading: 'Let fashion educate you',
+      buttonText: 'Shop now',
+      link: ''
+    }
   },
   {
     id: 2,
     background: backgroundImg__2,
     header: slideImg__2,
-    text: '50% off discount'
+    text: {
+      heading: 'Black friday',
+      subHeading: 'Get 30% off any purchase you make on black friday',
+      buttonText: 'Shop now',
+      link: ''
+    }
   },
   {
     id: 3,
     background: backgroundImg__6,
     header: slideImg__3,
-    text: '50% off discount'
+    text: {
+      heading: 'Huge summer collection',
+      subHeading: `T-shirts, socks and hats`,
+      buttonText: 'Discover more',
+      link: ''
+    }
   }
 ]
 
